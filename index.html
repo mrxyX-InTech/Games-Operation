@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080d12" />
+  <meta name="description" content="THE OPERATION — simulasi investigasi digital CIB." />
+  <title>THE OPERATION // CIB</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="orientation-hint" class="orientation-hint" aria-live="polite">
+    <div class="orientation-card">
+      <div class="orientation-icon" aria-hidden="true"><span></span><span></span></div>
+      <p class="eyebrow">PERANGKAT TERDETEKSI</p>
+      <h2>Putar perangkat ke landscape</h2>
+      <p>Workstation CIB membutuhkan ruang horizontal. Jika browser mengizinkan, kunci orientasi secara otomatis.</p>
+      <button class="btn btn-primary" data-action="fullscreen">MASUK LAYAR PENUH</button>
+    </div>
+  </div>
+
+  <main id="app-root">
+    <section id="boot-screen" class="screen boot-screen" aria-label="CIB system boot">
+      <div class="boot-grid"></div>
+      <div class="boot-core">
+        <div class="cib-mark cib-mark-large" aria-label="CIB"><span class="mark-ring"></span><span class="mark-bar"></span><b>CIB</b></div>
+        <div class="boot-title">CYBER INTELLIGENCE BUREAU</div>
+        <div class="boot-rule"><span id="boot-progress"></span></div>
+        <div id="boot-log" class="boot-log" aria-live="polite"></div>
+        <button id="skip-boot" class="text-button" data-action="skip-boot">LEWATI SEQUENCE <span>↵</span></button>
+      </div>
+    </section>
+
+    <section id="login-screen" class="screen login-screen is-hidden" aria-label="Agent login">
+      <div class="login-backdrop"></div>
+      <div class="login-panel">
+        <div class="login-brand">
+          <div class="cib-mark" aria-label="CIB"><span class="mark-ring"></span><span class="mark-bar"></span><b>CIB</b></div>
+          <div><p class="eyebrow">SECURE WORKSTATION</p><h1>THE OPERATION</h1></div>
+        </div>
+        <div class="login-divider"></div>
+        <form id="login-form" class="login-form">
+          <label for="agent-name">NAMA AGEN</label>
+          <input id="agent-name" name="agent-name" maxlength="28" autocomplete="off" placeholder="Masukkan nama operasional" required />
+          <div class="login-meta"><span>LEVEL CLEARANCE</span><strong>CLEARANCE // 01</strong></div>
+          <p id="login-message" class="form-message">AUTHENTICATION REQUIRED // LOCAL SIMULATION</p>
+          <button class="btn btn-primary btn-wide" type="submit">LOGIN KE WORKSTATION <span>→</span></button>
+        </form>
+        <div class="login-foot"><span>FIKSI INTERAKTIF // TIDAK TERHUBUNG KE SISTEM NYATA</span><span>BUILD 1.0.04</span></div>
+      </div>
+    </section>
+
+    <section id="game-shell" class="game-shell is-hidden" aria-label="CIB investigation desktop">
+      <header class="topbar">
+        <div class="topbar-brand"><div class="cib-mark cib-mark-small"><span class="mark-ring"></span><span class="mark-bar"></span><b>CIB</b></div><span class="brand-divider"></span><span class="topbar-context">OPERATIONS DESK <i>//</i> <b>LOCAL NODE 07</b></span></div>
+        <div class="topbar-status">
+          <span class="status-chip"><i class="status-dot is-live"></i> NETWORK SECURE</span>
+          <span class="status-chip"><i class="status-dot is-cyan"></i> CIPHER 256</span>
+          <span id="topbar-time" class="topbar-time">00:00:00</span>
+          <button class="icon-button" title="Fullscreen" aria-label="Fullscreen" data-action="fullscreen">⛶</button>
+        </div>
+      </header>
+
+      <div class="desktop-body">
+        <aside class="command-rail" aria-label="Application launcher">
+          <div class="rail-section-label">APPS</div>
+          <nav id="app-launcher" class="app-launcher"></nav>
+          <div class="rail-spacer"></div>
+          <button class="rail-profile" data-open-app="profile" title="Buka profil agen"><span id="rail-avatar">AG</span><small id="rail-level">R01</small></button>
+        </aside>
+
+        <section class="workspace" aria-label="Investigation workspace">
+          <div class="wallpaper-mark" aria-hidden="true"><span class="wm-ring"></span><span class="wm-bar"></span><strong>CIB</strong></div>
+          <div class="workspace-header">
+            <div><p class="eyebrow">CIB // DIGITAL INVESTIGATION DESK</p><h2>Selamat datang, <span id="agent-greeting">AGENT</span>.</h2><p class="muted">Jangan kejar kecocokan. Kejar bukti yang bisa dipertanggungjawabkan.</p></div>
+            <div class="workspace-actions"><button class="btn btn-ghost" data-open-app="case-files">BUKA KASUS AKTIF</button><button class="btn btn-ghost" data-action="save-game">SIMPAN PROGRES</button></div>
+          </div>
+          <div id="desktop-overview" class="desktop-overview"></div>
+          <div id="window-layer" class="window-layer" aria-live="polite"></div>
+        </section>
+      </div>
+
+      <section id="mission-dock" class="mission-dock" aria-label="Mission tracker"></section>
+      <footer class="taskbar">
+        <div class="taskbar-left"><span class="taskbar-label">CIB DESKTOP</span><span class="taskbar-separator"></span><span id="taskbar-save-state">SYNCED</span></div>
+        <div id="taskbar-windows" class="taskbar-windows"></div>
+        <div class="taskbar-right"><span id="taskbar-xp">XP 0000</span><span class="taskbar-separator"></span><button class="taskbar-settings" data-open-app="settings">SETTINGS</button></div>
+      </footer>
+    </section>
+  </main>
+
+  <div id="toast-stack" class="toast-stack" aria-live="polite"></div>
+  <div id="dialog-overlay" class="dialog-overlay is-hidden" role="dialog" aria-modal="true" aria-label="Dialogue"></div>
+  <div id="lightbox" class="lightbox is-hidden" role="dialog" aria-modal="true"><button class="lightbox-close" data-action="close-lightbox">×</button><div id="lightbox-content"></div></div>
+  <div id="confirm-modal" class="modal-backdrop is-hidden" role="dialog" aria-modal="true"><div class="confirm-card"><p class="eyebrow">KONFIRMASI SISTEM</p><h2 id="confirm-title">Reset progres?</h2><p id="confirm-copy">Semua data lokal akan dihapus.</p><div class="modal-actions"><button class="btn btn-ghost" data-action="close-confirm">BATAL</button><button class="btn btn-danger" data-action="confirm-reset">RESET DATA</button></div></div></div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
